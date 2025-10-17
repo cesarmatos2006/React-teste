@@ -1,0 +1,25 @@
+name: React CD - Deploy para GitHub Pages
+
+on:
+   push:
+       branches: [ "main" ]
+
+permissions:
+       contents: write
+       pages: write
+       id-token: write
+
+concurrency:
+        group: "pages"
+        cancel-in-progress: true
+
+ jobs:
+      deploy:
+         environment:
+            name: github-pages
+            url: ${{ steps.deployment.outputs.pages_url }}
+
+         runs-on: ubuntu-latest
+
+         steps:
+             
