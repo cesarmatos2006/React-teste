@@ -2,7 +2,7 @@ name: React CD - Deploy para GitHub Pages
 
 on:
    push:
-       branches: [ "main" ]
+       branches: ["main"]
 
 permissions:
        contents: write
@@ -14,10 +14,10 @@ concurrency:
         cancel-in-progress: true
 
 jobs:
-      deploy:
+    deploy:
          environment:
             name: github-pages
-            url: ${{ steps.deployment.outputs.pages_url }}
+            url: ${{ steps.deployment.outputs.page_url }}
 
          runs-on: ubuntu-latest
 
@@ -40,12 +40,13 @@ jobs:
          - name: Upload para github pages
            uses: actions/upload-pages-artifact@v3
            with:
-               path: ./build
+                 path: ./build
 
          - name: Deploy para o github pages
            id: deployment
            uses: actions/deploy-pages@v4
-           
-
+             
+                 
+             
            
              
